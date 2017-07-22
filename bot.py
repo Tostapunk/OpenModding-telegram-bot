@@ -417,7 +417,8 @@ Use /yes to turn on notifications and /no if you don't want to receive them"""
 
 def credits(bot, update):
     db.update_user(update.message.from_user)
-    text = "Made and maintained by @Tostapunk"
+    text = """Made and maintained by @Tostapunk
+<a href="https://github.com/Tostapunk/OpenModding-telegram-bot">GitHub</a>"""
     update.message.reply_text(text=text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 def keyboard(bot, update):
