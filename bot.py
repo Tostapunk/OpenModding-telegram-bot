@@ -118,9 +118,9 @@ class DBHandler:
         if dicted:
             result = {}
             for query in query_db:
-                if query["codename"][:-1] not in result:
-                    result[query["codename"][:-1]] = ()
-                result[query["codename"][:-1]] += ({"name": query["name"],
+                if query["codename"] not in result:
+                    result[query["codename"]] = ()
+                result[query["codename"]] += ({"name": query["name"],
                                                     "link": query["link"], },)
         else:
             result = ()
@@ -235,7 +235,7 @@ def inline_query(bot, update):
         if links_db:
             text = "Here are all links containing \"%s\" word.\n\n" % (query.query)
             for key in links_db.keys():
-                text += "<b>%ss</b>\n" % (key)
+                text += "<b>%s</b>\n" % (key)
                 for rom in links_db[key]:
                     text += "<a href=\"%s\">%s</a>\n" % (rom["link"], rom["name"])
                 text += "\n"
