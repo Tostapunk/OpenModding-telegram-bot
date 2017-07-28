@@ -5,7 +5,7 @@ import logging, sqlite3, pytz, re
 from telegram.ext import Updater, CommandHandler, Filters, MessageHandler, CallbackQueryHandler, \
     InlineQueryHandler, RegexHandler, ConversationHandler
 from telegram import ParseMode, InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultArticle, \
-    InputTextMessageContent, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardHide
+    InputTextMessageContent, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from datetime import datetime
 from uuid import uuid4
 
@@ -433,7 +433,7 @@ def keyboard(bot, update):
 def nokeyboard(bot, update):
     db.update_user(update.message.from_user)
     text = "Keyboard is down."
-    reply_markup = ReplyKeyboardHide()
+    reply_markup = ReplyKeyboardRemove()
     update.message.reply_text(reply_markup=reply_markup, text=text, parse_mode=ParseMode.HTML,
                               disable_web_page_preview=True)
 
@@ -441,7 +441,7 @@ def message_handler(bot, update):
     db.update_user(update.message.from_user)
     if update.message.text == "Close Keyboard":
         text = "Keyboard is down."
-        reply_markup = ReplyKeyboardHide()
+        reply_markup = ReplyKeyboardRemove()
         update.message.reply_text(text=text, reply_markup=reply_markup, parse_mode=ParseMode.HTML,
                                   disable_web_page_preview=True)
     else:
