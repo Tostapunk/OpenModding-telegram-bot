@@ -10,6 +10,8 @@ Btw be thankful with your admins that will update the rom list in this bot!
 
 Example of my bot for kenzo users: [KenzoModding_bot](http://t.me/KenzoModding_bot)
 
+Use [this channel](https://t.me/tostabots) to get notified when there's a new commit
+
 ## Getting Started
 
 ### Prerequisites
