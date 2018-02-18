@@ -8,6 +8,7 @@ from telegram import ParseMode, InlineKeyboardButton, InlineKeyboardMarkup, Inli
     InputTextMessageContent, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from datetime import datetime
 from uuid import uuid4
+from tzlocal import get_localzone
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -59,7 +60,7 @@ class DBHandler:
         query = (from_user.first_name,
                  from_user.last_name,
                  from_user.username,
-                 datetime.now(pytz.timezone('Europe/Rome')),
+                 datetime.now(pytz.timezone(str(get_localzone()))).strftime('%Y-%m-%d %H:%M'),
                  used + 1,
                  from_user.id)
         if check:
